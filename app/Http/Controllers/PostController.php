@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    protected $postsPerPage = 25;
+    protected $postsPerPage = 15;
     //
     public function index()
     {
@@ -23,7 +23,7 @@ class PostController extends Controller
 
 
 
-    private function getPosts($postsPerPage = 25){
+    private function getPosts($postsPerPage = 15){
         $posts =  Post::paginate($postsPerPage);
         $data = [];
         if ($posts) {
