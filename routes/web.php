@@ -16,4 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PostController::class, 'index']);
-Route::get('/admin', [AdminController::class, 'admin']);
+Route::post('/', [PostController::class, 'addPost']);
+Route::get('/authors/{id}', [AuthorController::class, 'getAuthor']);
+Route::get('/admin', [AdminController::class, 'index']);
+Route::post('/admin', [AdminController::class, 'deletePost']);
