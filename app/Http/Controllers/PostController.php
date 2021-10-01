@@ -24,7 +24,7 @@ class PostController extends Controller
 
 
     private function getPosts($postsPerPage = 15){
-        $posts =  Post::paginate($postsPerPage);
+        $posts =  Post::paginate($postsPerPage); //todo: проверить сортировки в конце
         $data = [];
         if ($posts) {
             foreach ($posts->fragment('posts') as $post) {
@@ -32,7 +32,7 @@ class PostController extends Controller
                 $data['posts'][] = [
                     'title' => $post['title'],
                     'description' => $post['description'],
-                    'author' => ['name' => $author->name, 'email' => $author->email],
+                    'author' => ['name' => $author->name, 'email' => $author->email, 'id' => $author->id],
                     'date_added' => $post['created_at']
                 ];
             }
@@ -41,10 +41,10 @@ class PostController extends Controller
         }
         return $data;
     }
-    private function addPost(){
+    public function addPost(){
 
     }
-    private function deletePost(){
+    public function deletePost(){
 
     }
 }
